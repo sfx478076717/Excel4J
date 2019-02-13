@@ -37,6 +37,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
@@ -222,23 +223,12 @@ public class SheetTemplateHandler {
             return;
         }
 
-        if (int.class == value.getClass()) {
-            cell.setCellValue((int) value);
-            template.currentColumnIndex++;
-            return;
-        }
-
         if (Integer.class == value.getClass()) {
             cell.setCellValue((Integer) value);
             template.currentColumnIndex++;
             return;
         }
 
-        if (double.class == value.getClass()) {
-            cell.setCellValue((double) value);
-            template.currentColumnIndex++;
-            return;
-        }
 
         if (Double.class == value.getClass()) {
             cell.setCellValue((Double) value);
@@ -252,11 +242,6 @@ public class SheetTemplateHandler {
             return;
         }
 
-        if (boolean.class == value.getClass()) {
-            cell.setCellValue((boolean) value);
-            template.currentColumnIndex++;
-            return;
-        }
         if (Boolean.class == value.getClass()) {
             cell.setCellValue((Boolean) value);
             template.currentColumnIndex++;
@@ -268,7 +253,7 @@ public class SheetTemplateHandler {
             return;
         }
 		if (BigDecimal.class == value.getClass()) {
-			cell.setCellStyle((BigDecimal) value);
+			cell.setCellValue((Double) value);
 			template.currentColumnIndex++;
 			return;
 		}

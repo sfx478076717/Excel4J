@@ -279,7 +279,7 @@ public class Utils {
      * @return 对象指定字段内容
      * @throws Excel4JException 异常
      */
-    public static String getProperty(Object bean, String fieldName, WriteConvertible writeConvertible)
+    public static Object getProperty(Object bean, String fieldName, WriteConvertible writeConvertible)
             throws Excel4JException {
 
         if (bean == null || fieldName == null)
@@ -296,7 +296,11 @@ public class Utils {
             // 写入转换器
             object = writeConvertible.execWrite(object);
         }
-        return object == null ? "" : object.toString();
+        if (object instanceof Integer || object instanceof Double || object instanceof Long || object instanceof BigDecimal) {
+            return object;
+        }else {
+            return object == null ? "" : object.toString();
+        }
     }
 
     /**
